@@ -1,0 +1,63 @@
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+# This workflow will install Deno and run tests across stable and canary builds on Windows, Ubuntu and macOS.
+# For more information see: https://github.com/denoland/setup-deno
+
+name: Alisa Test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      AZURE_ACCOUNT_NAME: ${{secrets.AZURE_ACCOUNT_NAME}}
+      AZURE_ACCOUNT_PASSWORD: ${{secrets.AZURE_ACCOUNT_PASSWORD}}
+      AZURE_SUBSCRIPTION_ID: ${{secrets.AZURE_SUBSCRIPTION_ID}}
+      AZURE_TENANT_ID: ${{secrets.AZURE_TENANT_ID}}
+      M365_ACCOUNT_NAME: ${{secrets.M365_ACCOUNT_NAME}}
+      M365_ACCOUNT_PASSWORD: ${{secrets.M365_ACCOUNT_PASSWORD}}
+      M365_TENANT_ID: ${{secrets.M365_TENANT_ID}}
+
+    steps:
+      - name: Setup repo
+        uses: actions/checkout@v2
+      
+      - uses: OfficeDev/teamsfx-cli-action@test
+        with:
+          commands: new
+          interactive: false
+          app-name: alisaa001
+          capabilities: |
+            tab
+            bot
+
+      - uses: OfficeDev/teamsfx-cli-action@test
+        with:
+          commands: provision
+          folder: ./alisaa001
+          subscription: ${{env.AZURE_SUBSCRIPTION_ID}}
+      
+      - uses: OfficeDev/teamsfx-cli-action@test
+        with:
+          commands: deploy
+          folder: ./alisaa001
+
+      - uses: OfficeDev/teamsfx-cli-action@test
+        with:
+          commands: validate
+          folder: ./alisaa001
+      
+      - uses: OfficeDev/teamsfx-cli-action@test
+        with:
+          commands: build
+          folder: ./alisaa001
+
+      - uses: OfficeDev/teamsfx-cli-action@test
+        with:
+          commands: publish
+          folder: ./alisaa001
