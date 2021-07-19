@@ -44,6 +44,8 @@ jobs:
           commands: provision
           folder: ./${{env.APP_NAME}}
           subscription: ${{env.AZURE_SUBSCRIPTION_ID}}
+          sql-admin-name: ${env.APP_NAME}
+          sql-password: qwer@1234
       
       - uses: OfficeDev/teamsfx-cli-action@test
         with:
