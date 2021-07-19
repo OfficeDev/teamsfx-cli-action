@@ -35,7 +35,14 @@ describe('Test BuildCommandString', () => {
 
     // Assert
     expect(cmdStr).toBe(
-      `${Commands.TeamsfxCliName} resource add azure-sql --debug true`
+      [
+        Commands.TeamsfxCliName,
+        'resource',
+        'add',
+        'azure-sql',
+        '--debug',
+        'true'
+      ].join(Commands.CommandSpace)
     )
   })
 
@@ -49,7 +56,9 @@ describe('Test BuildCommandString', () => {
     const cmdStr = BuildCommandString()
 
     // Assert
-    expect(cmdStr).toBe(`${Commands.TeamsfxCliName} --version true`)
+    expect(cmdStr).toBe(
+      [Commands.TeamsfxCliName, '--version', 'true'].join(Commands.CommandSpace)
+    )
   })
 
   test('Case 3: One Command + Multiple Options', () => {
@@ -69,7 +78,17 @@ describe('Test BuildCommandString', () => {
 
     // Assert
     expect(cmdStr).toBe(
-      `${Commands.TeamsfxCliName} new --debug true --folder ./project --capabilities tab bot`
+      [
+        Commands.TeamsfxCliName,
+        'new',
+        '--debug',
+        'true',
+        '--folder',
+        './project',
+        '--capabilities',
+        'tab',
+        'bot'
+      ].join(Commands.CommandSpace)
     )
   })
 
@@ -87,6 +106,10 @@ describe('Test BuildCommandString', () => {
     const cmdStr = BuildCommandString()
 
     // Assert
-    expect(cmdStr).toBe(`${Commands.TeamsfxCliName} provision --subscription 123456`)
+    expect(cmdStr).toBe(
+      [Commands.TeamsfxCliName, 'provision', '--subscription', '123456'].join(
+        Commands.CommandSpace
+      )
+    )
   })
 })

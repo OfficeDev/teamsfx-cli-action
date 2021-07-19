@@ -4,11 +4,7 @@ import {MultipleOptions} from '../enums/multipleOptions'
 import {SingleOptions} from '../enums/singleOptions'
 
 export function BuildCommandString(): string {
-  let commandPrefix = ''
-  const commands = core.getMultilineInput(ActionInputs.Commands)
-  if (commands.length > 0) {
-    commandPrefix = `${commands.join(' ')}`
-  }
+  const commands = core.getMultilineInput(ActionInputs.Commands) || []
 
   // Iterate to collect options.
   const optionsPart: string[] = []
@@ -16,7 +12,11 @@ export function BuildCommandString(): string {
   for (const optionName of Object.values<string>(SingleOptions)) {
     const optionValue = core.getInput(optionName)
     if (optionValue) {
-      optionsPart.push(`${Commands.AddOptionPrefix(optionName)} ${optionValue}`)
+      optionsPart.push(
+        [Commands.AddOptionPrefix(optionName), optionValue].join(
+          Commands.CommandSpace
+        )
+      )
     }
   }
 
@@ -24,14 +24,15 @@ export function BuildCommandString(): string {
     const optionValues = core.getMultilineInput(optionName)
     if (optionValues.length > 0) {
       optionsPart.push(
-        `${Commands.AddOptionPrefix(optionName)} ${optionValues.join(' ')}`
+        `${Commands.AddOptionPrefix(optionName)} ${optionValues.join(
+          Commands.CommandSpace
+        )}`
       )
     }
   }
 
-  const commandPrefixStr = commandPrefix ? ` ${commandPrefix}` : ''
-  const optionsPartStr =
-    optionsPart.length > 0 ? ` ${optionsPart.join(' ')}` : ''
-
-  return `${Commands.TeamsfxCliName}${commandPrefixStr}${optionsPartStr}`
+  return [Commands.TeamsfxCliName]
+    .concat(commands)
+    .concat(optionsPart)
+    .join(' ')
 }

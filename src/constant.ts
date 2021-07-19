@@ -4,6 +4,7 @@ export class ActionInputs {
 }
 
 export class Commands {
+  static readonly CommandSpace: string = ' '
   static readonly TeamsfxCliVersion: string = '^0.2.2'
   static readonly TeamsfxCliName: string = `npx @microsoft/teamsfx-cli@${Commands.TeamsfxCliVersion}`
   static readonly AddOptionPrefix = (optionName: string): string =>
