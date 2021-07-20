@@ -19,9 +19,9 @@ jobs:
       AZURE_ACCOUNT_PASSWORD: ${{secrets.AZURE_ACCOUNT_PASSWORD}}
       AZURE_SUBSCRIPTION_ID: ${{secrets.AZURE_SUBSCRIPTION_ID}}
       AZURE_TENANT_ID: ${{secrets.AZURE_TENANT_ID}}
-      M365_ACCOUNT_NAME: ${{secrets.M365_ACCOUNT_NAME}}
-      M365_ACCOUNT_PASSWORD: ${{secrets.M365_ACCOUNT_PASSWORD}}
-      M365_TENANT_ID: ${{secrets.M365_TENANT_ID}}
+      M365_ACCOUNT_NAME: ${{secrets.TMTEST_M365_ACCOUNT_NAME}}
+      M365_ACCOUNT_PASSWORD: ${{secrets.TMTEST_M365_ACCOUNT_PASSWORD}}
+      M365_TENANT_ID: ${{secrets.TMTEST_M365_TENANT_ID}}
 
     steps:
       - name: Setup repo
@@ -31,7 +31,7 @@ jobs:
         with:
           commands: new
           interactive: false
-          app-name: alisaa001
+          app-name: tmtestalisaa002
           capabilities: |
             tab
             bot
@@ -39,25 +39,25 @@ jobs:
       - uses: OfficeDev/teamsfx-cli-action@test
         with:
           commands: provision
-          folder: ./alisaa001
+          folder: ./tmtestalisaa002
           subscription: ${{env.AZURE_SUBSCRIPTION_ID}}
       
       - uses: OfficeDev/teamsfx-cli-action@test
         with:
           commands: deploy
-          folder: ./alisaa001
+          folder: ./tmtestalisaa002
 
       - uses: OfficeDev/teamsfx-cli-action@test
         with:
           commands: validate
-          folder: ./alisaa001
+          folder: ./tmtestalisaa002
       
       - uses: OfficeDev/teamsfx-cli-action@test
         with:
           commands: build
-          folder: ./alisaa001
+          folder: ./tmtestalisaa002
 
       - uses: OfficeDev/teamsfx-cli-action@test
         with:
           commands: publish
-          folder: ./alisaa001
+          folder: ./tmtestalisaa002
