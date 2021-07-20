@@ -72,9 +72,9 @@ To use any credentials, add them as [secrets](https://docs.github.com/en/actions
 |M365_ACCOUNT_PASSWORD|The password of M365 account.|
 |M365_TENANT_ID|To identify the tenant in which the Teams App will be created/published.|
 
-*PS:* To make these credentials work in environment variables, there should not exist any interactive part of the login process, so extra configurations should be made.
-1. The account's two-step authentication should be turned off.
-2. The account's security defaults should be turned off.
+*PS:* To make these credentials work in environment variables, there should not exist any interactive part of the login process, so extra configurations should be made. These operations have risks, so be aware of that and try to make your password complicated, and the way to login by service principal in environment variables will be supported in the future.
+1. The account's two-step authentication should be turned off, and please refer to [Turning two-step verification on or off for your Microsoft account](https://support.microsoft.com/en-us/account-billing/turning-two-step-verification-on-or-off-for-your-microsoft-account-b1a56fc2-caf3-a5a1-f7e3-4309e99987ca).
+2. The account's security defaults should be turned off, and please refer to [Disabling security defaults](https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/concept-fundamentals-security-defaults#disabling-security-defaults).
 
 In the meantime, the Azure/M365 accounts provided here should have sufficient permissions.
 
