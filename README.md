@@ -1,14 +1,82 @@
-# Project
+# GitHub Action for TeamsFx CLI
 
-> This repo has been populated by an initial template to help get you started. Please
-> make sure to update the content to build a great experience for community-building.
 
-As the maintainer of this project, please make a few updates:
+With TeamsFx CLI GitHub Action, you can automate your workflow by executing [TeamsFx CLI](https://www.npmjs.com/package/@microsoft/teamsfx-cli) commands inside of an Action.
 
-- Improving this README.MD file to provide a great experience
-- Updating SUPPORT.MD with content about this project's support experience
-- Understanding the security reporting process in SECURITY.MD
-- Remove this section from the README
+The definition of this GitHub Action is in [action.yml](https://github.com/OfficeDev/teamsfx-cli-action/blob/main/action.yml).
+
+## Sample workflow 
+
+### Dependencies on other GitHub Actions
+* [Checkout](https://github.com/actions/checkout) – **Required** To checkout the project code presents in your repository
+### Workflow example for Continuous Deployment
+```
+name: Continuous Deployment
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    env:
+      AZURE_ACCOUNT_NAME: ${{secrets.AZURE_ACCOUNT_NAME}}
+      AZURE_ACCOUNT_PASSWORD: ${{secrets.AZURE_ACCOUNT_PASSWORD}}
+      AZURE_SUBSCRIPTION_ID: ${{secrets.AZURE_SUBSCRIPTION_ID}}
+      AZURE_TENANT_ID: ${{secrets.AZURE_TENANT_ID}}
+      M365_ACCOUNT_NAME: ${{secrets.M365_ACCOUNT_NAME}}
+      M365_ACCOUNT_PASSWORD: ${{secrets.M365_ACCOUNT_PASSWORD}}
+      M365_TENANT_ID: ${{secrets.M365_TENANT_ID}}
+
+    steps:
+      # Checkout the code.
+      - uses: actions/checkout@v2
+      
+      # Provision resources.
+      - uses: OfficeDev/teamsfx-cli-action@v0
+        with:
+          commands: provision
+          subscription: ${{env.AZURE_SUBSCRIPTION_ID}}
+    
+      # Deploy the code.
+      - uses: OfficeDev/teamsfx-cli-action@v0
+        with:
+          commands: deploy
+
+      # Validate the manifest.
+      - uses: OfficeDev/teamsfx-cli-action@v0
+        with:
+          commands: validate
+
+      # Publish the Teams App.
+      - uses: OfficeDev/teamsfx-cli-action@v0
+        with:
+          commands: publish
+```
+
+### Configure M365/Azure credentials as GitHub Secret:
+
+To use any credentials, add them as [secrets](https://docs.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets) in the GitHub repository and then use them in the workflow.
+
+[TeamsFx CLI](https://www.npmjs.com/package/@microsoft/teamsfx-cli) relies on environment variables to provide login credentials for Azure and M365. The table below lists all of the environment variables.
+|Name|Description|
+|---|---|
+|AZURE_ACCOUNT_NAME|The account name of Azure which is used to provision resources.|
+|AZURE_ACCOUNT_PASSWORD|The password of Azure account.|
+|AZURE_SUBSCRIPTION_ID|To identify the subscription in which the resources will be provisined.|
+|AZURE_TENANT_ID|To identify the tenant in which the subscription resides.|
+|M365_ACCOUNT_NAME|The M365 account for creating and publishing Teams App.|
+|M365_ACCOUNT_PASSWORD|The password of M365 account.|
+|M365_TENANT_ID|To identify the tenant in which the Teams App will be created/published.|
+
+*PS:* To make these credentials work in environment variables, there should not exist any interactive part of the login process, so extra configurations should be made.
+1. The account's two-step authentication should be turned off.
+2. The account's security defaults should be turned off.
+
+In the meantime, the Azure/M365 accounts provided here should have sufficient permissions.
 
 ## Contributing
 
