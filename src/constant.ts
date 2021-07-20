@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT license.
+
 /* eslint-disable @typescript-eslint/no-extraneous-class */
 export class ActionInputs {
   static readonly Commands: string = 'commands'
