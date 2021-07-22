@@ -22,11 +22,6 @@ jobs:
         with:
           ref: projects
 
-      - uses: actions/download-artifact@v2
-        with:
-          name: after-provision-fx-folder
-          path: ./${{env.PROJECT_NAME}}/.fx
-
       - uses: OfficeDev/teamsfx-cli-action@test
         with:
           commands: provision
