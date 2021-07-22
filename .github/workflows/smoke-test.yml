@@ -30,13 +30,18 @@ jobs:
       
       - uses: actions/upload-artifact@v2
         with:
-          name: fx-folder
+          name: after-provision-fx-folder
           path: ./${{env.PROJECT_NAME}}/.fx
 
       - uses: OfficeDev/teamsfx-cli-action@test
         with:
           commands: deploy
           folder: ./${{env.PROJECT_NAME}}
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: after-deploy-fx-folder
+          path: ./${{env.PROJECT_NAME}}/.fx
 
       - uses: OfficeDev/teamsfx-cli-action@test
         with:
@@ -47,7 +52,12 @@ jobs:
         with:
           commands: build
           folder: ./${{env.PROJECT_NAME}}
-
+      
+      - uses: actions/upload-artifact@v2
+        with:
+          name: appPackage
+          path: ./${{env.PROJECT_NAME}}/.fx/appPackage.zip
+          
       - uses: OfficeDev/teamsfx-cli-action@test
         with:
           commands: publish
