@@ -1,11 +1,3 @@
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
-
-# This workflow will install Deno and run tests across stable and canary builds on Windows, Ubuntu and macOS.
-# For more information see: https://github.com/denoland/setup-deno
-
 name: Smoke Test
 
 on:
@@ -23,41 +15,40 @@ jobs:
       M365_ACCOUNT_PASSWORD: ${{secrets.M365_ACCOUNT_PASSWORD}}
       M365_TENANT_ID: ${{secrets.M365_TENANT_ID}}
 
+      PROJECT_NAME: smoketest
     steps:
       - name: Setup repo
         uses: actions/checkout@v2
-      
-      - uses: OfficeDev/teamsfx-cli-action@test
         with:
-          commands: new
-          interactive: false
-          app-name: ruhe07161043
-          capabilities: |
-            tab
-            bot
+          ref: projects
 
       - uses: OfficeDev/teamsfx-cli-action@test
         with:
           commands: provision
-          folder: ./ruhe07161043
+          folder: ./${{env.PROJECT_NAME}}
           subscription: ${{env.AZURE_SUBSCRIPTION_ID}}
       
+      - uses: actions/upload-artifact@v2
+        with:
+          name: fx-folder
+          path: ./${{env.PROJECT_NAME}}/.fx
+
       - uses: OfficeDev/teamsfx-cli-action@test
         with:
           commands: deploy
-          folder: ./ruhe07161043
+          folder: ./${{env.PROJECT_NAME}}
 
       - uses: OfficeDev/teamsfx-cli-action@test
         with:
           commands: validate
-          folder: ./ruhe07161043
+          folder: ./${{env.PROJECT_NAME}}
       
       - uses: OfficeDev/teamsfx-cli-action@test
         with:
           commands: build
-          folder: ./ruhe07161043
+          folder: ./${{env.PROJECT_NAME}}
 
       - uses: OfficeDev/teamsfx-cli-action@test
         with:
           commands: publish
-          folder: ./ruhe07161043
+          folder: ./${{env.PROJECT_NAME}}
