@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT license.
+
 import {ErrorType, BaseError} from './baseError'
 import {ErrorNames, Suggestions} from './constant'
 
