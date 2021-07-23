@@ -42,7 +42,7 @@ jobs:
         uses: azure/CLI@v1
         with:
           azcliversion: 2.0.81
-          inlineScript: az storage blob upload-batch -d artifacts -account-name ruhetest0722 -s ./${PROJECT_NAME}/.fx
+          inlineScript: az storage blob upload-batch -d artifacts --account-name ruhetest0722 -s ./${PROJECT_NAME}/.fx
 
       - uses: OfficeDev/teamsfx-cli-action@test
         with:
