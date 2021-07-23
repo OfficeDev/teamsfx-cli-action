@@ -33,15 +33,21 @@ jobs:
           name: after-provision-fx-folder
           path: ./${{env.PROJECT_NAME}}/.fx
 
+      - name: Azure Login to upload .fx.
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_STORAGE_CREDENTIALS}}
+
+      - name: Upload .fx onto Azure Blob.
+        uses: azure/CLI@v1
+        with:
+          azcliversion: 2.0.81
+          inlineScript: az storage blob upload-batch -d artifacts -account-name ruhetest0722 -s ./${PROJECT_NAME}/.fx
+
       - uses: OfficeDev/teamsfx-cli-action@test
         with:
           commands: deploy
           folder: ./${{env.PROJECT_NAME}}
-
-      - uses: actions/upload-artifact@v2
-        with:
-          name: after-deploy-fx-folder
-          path: ./${{env.PROJECT_NAME}}/.fx
 
       - uses: OfficeDev/teamsfx-cli-action@test
         with:
