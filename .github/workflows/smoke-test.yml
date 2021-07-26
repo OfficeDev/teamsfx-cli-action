@@ -3,7 +3,7 @@ name: Smoke Test
 on:
   push:
     branches: [ projects ]
-
+  workflow_dispatch:
 jobs:
   test:
     runs-on: ubuntu-latest
