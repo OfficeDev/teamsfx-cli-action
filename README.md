@@ -1,9 +1,9 @@
 # GitHub Action for TeamsFx CLI
 
 
-With TeamsFx CLI GitHub Action, you can automate your workflow by executing [TeamsFx CLI](https://www.npmjs.com/package/@microsoft/teamsfx-cli) commands inside of an Action.
+The TeamsFx CLI GitHub Action is an integration of [TeamsFx CLI](https://www.npmjs.com/package/@microsoft/teamsfx-cli) commands, which helps Teams app developers to automate their CI/CD workflow.
 
-The definition of this GitHub Action is in [action.yml](https://github.com/OfficeDev/teamsfx-cli-action/blob/main/action.yml).
+More definition of Teams CLI GitHub Action is here in [action.yml](https://github.com/OfficeDev/teamsfx-cli-action/blob/main/action.yml).
 
 ## Sample workflow 
 
@@ -78,19 +78,13 @@ To use any credentials, add them as [secrets](https://docs.github.com/en/actions
 
 In the meantime, the Azure/M365 accounts provided here should have sufficient permissions.
 
-## Contributing
+# Data Collection. 
 
-This project welcomes contributions and suggestions.  Most contributions require you to agree to a
-Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us
-the rights to use your contribution. For details, visit https://cla.opensource.microsoft.com.
+The software may collect information about you and your use of the software and send it to Microsoft. Microsoft may use this information to provide services and improve our products and services. You may turn off the telemetry as described in the repository. There are also some features in the software that may enable you and Microsoft to collect data from users of your applications. If you use these features, you must comply with applicable law, including providing appropriate notices to users of your applications together with a copy of Microsoft’s privacy statement. Our privacy statement is located at https://go.microsoft.com/fwlink/?LinkID=824704. You can learn more about data collection and use in the help documentation and our privacy statement. Your use of the software operates as your consent to these practices.
 
-When you submit a pull request, a CLA bot will automatically determine whether you need to provide
-a CLA and decorate the PR appropriately (e.g., status check, comment). Simply follow the instructions
-provided by the bot. You will only need to do this once across all repos using our CLA.
+## Reporting security issues and bugs
 
-This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
-For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
-contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
+Security issues and bugs should be reported privately, via email, to the Microsoft Security Response Center (MSRC) secure@microsoft.com. You should receive a response within 24 hours. If for some reason you do not, please follow up via email to ensure we received your original message. Further information, including the MSRC PGP key, can be found in the [Security TechCenter](https://www.microsoft.com/en-us/msrc/faqs-report-an-issue?rtc=1).
 
 ## Trademarks
 
