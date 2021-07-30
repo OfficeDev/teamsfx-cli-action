@@ -1,7 +1,10 @@
 name: Tab with APIM Project Test
 
 on:
-  workflow_dispatch:
+  # When new commits are pushed onto the branch.
+  push:
+    branches:
+      - tmtestapim
 
 jobs:
   test:
@@ -30,7 +33,7 @@ jobs:
             resource
             add
             azure-apim
-            subscription: ${AZURE_SUBSCRIPTION_ID}
+          subscription: ${AZURE_SUBSCRIPTION_ID}
 
       - name: Provision hosting environment
         if: env.TEAMSFX_RUN_PROVISION == 'true'
@@ -44,7 +47,8 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: "chore: commit provision configs"
-          file_pattern: .fx/env.default.json
+          file_pattern: .fx/*
+          add_options: "-f"
       
       - uses: OfficeDev/teamsfx-cli-action@v0
         with:
@@ -53,9 +57,9 @@ jobs:
             frontend-hosting
             fucntion
             apim
-            open-api-document: apim.json
-            api-prefix: apim
-            api-version: v1
+          open-api-document: apim.json
+          api-prefix: apim
+          api-version: v1
 
       - uses: OfficeDev/teamsfx-cli-action@v0
         with:
