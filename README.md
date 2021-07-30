@@ -31,6 +31,8 @@ jobs:
       M365_ACCOUNT_PASSWORD: ${{secrets.M365_ACCOUNT_PASSWORD}}
       M365_TENANT_ID: ${{secrets.M365_TENANT_ID}}
 
+      TEAMSFX_CLI_VERSION: 0.3.1
+
     steps:
       # Checkout the code.
       - uses: actions/checkout@v2
@@ -56,6 +58,8 @@ jobs:
         with:
           commands: publish
 ```
+### Specify teamsfx cli's version
+To specify the version of [TeamsFx CLI](https://www.npmjs.com/package/@microsoft/teamsfx-cli), you can set the environment variable `TEAMSFX_CLI_VERSION` like the example workflow above. If the version is not specified, default version of `0.3.1` will be used.
 
 ### Configure M365/Azure credentials as GitHub Secret:
 
