@@ -13,22 +13,33 @@ jobs:
       AZURE_TENANT_ID: ${{secrets.AZURE_TENANT_ID}}
       M365_ACCOUNT_NAME: ${{secrets.TMTEST_M365_ACCOUNT_NAME}}
       M365_ACCOUNT_PASSWORD: ${{secrets.TMTEST_M365_ACCOUNT_PASSWORD}}
-      M365_TENANT_ID: ${{secrets.TMTEST_M365_TENANT_ID}}
-      
-      APP_NAME: tmtestall
 
+      
+      # If the hosting environment is not provisioned, set this environment variable to true.
+      # or if it's provisioned and has not updates, set this environment variable to false.
+      TEAMSFX_RUN_PROVISION: true
+      
     steps:
       - name: Setup repo
         uses: actions/checkout@v2
         with:
           ref: tmtestall
 
-      - uses: OfficeDev/teamsfx-cli-action@v0
+      - name: Provision hosting environment
+        if: env.TEAMSFX_RUN_PROVISION == 'true'
+        uses: OfficeDev/teamsfx-cli-action@v0
         with:
           commands: provision
           subscription: ${{env.AZURE_SUBSCRIPTION_ID}}
-          sql-admin-name: ${{env.APP_NAME}}
-          sql-password: qwer@1234
+          sql-admin-name: ${{secrets.SQL_ADMIN_NAME}}
+          sql-password: ${{secrets.SQL_PASSWORD}}
+
+      - name: Commit provision configs if necessary
+        if: env.TEAMSFX_RUN_PROVISION == 'true'
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "chore: commit provision configs"
+          file_pattern: .fx/env.default.json
       
       - uses: OfficeDev/teamsfx-cli-action@v0
         with:
