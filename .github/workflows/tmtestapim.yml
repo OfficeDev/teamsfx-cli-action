@@ -39,13 +39,13 @@ jobs:
       - uses: OfficeDev/teamsfx-cli-action@v0
         with:
           commands: |
-          deploy
-          "frontend-hosting"
-          fucntion
-          apim
-          open-api-document: apim.json
-          api-prefix: apim
-          api-version: v1
+            deploy
+            frontend-hosting
+            fucntion
+            apim
+            open-api-document: apim.json
+            api-prefix: apim
+            api-version: v1
 
       - uses: OfficeDev/teamsfx-cli-action@v0
         with:
