@@ -40,7 +40,7 @@ jobs:
         with:
           commands: |
           deploy
-          frontend-hosting
+          "frontend-hosting"
           fucntion
           apim
           open-api-document: apim.json
