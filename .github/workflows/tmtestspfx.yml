@@ -7,7 +7,7 @@ on:
       - tmtestspfx
 
 jobs:
-  test:
+  test-spfx:
     runs-on: ubuntu-latest
     env:
       AZURE_ACCOUNT_NAME: ${{secrets.AZURE_ACCOUNT_NAME}}
@@ -29,7 +29,7 @@ jobs:
 
       - name: Provision hosting environment
         if: env.TEAMSFX_RUN_PROVISION == 'true'
-        uses: OfficeDev/teamsfx-cli-action@v0
+        uses: OfficeDev/teamsfx-cli-action@v1
         with:
           commands: provision
 
@@ -42,7 +42,7 @@ jobs:
           add_options: "-f"
       
       
-      - uses: OfficeDev/teamsfx-cli-action@v0
+      - uses: OfficeDev/teamsfx-cli-action@v1
         with:
           commands: deploy
 
@@ -52,11 +52,11 @@ jobs:
           name: sppkg_zip
           path: ./SPFx/sharepoint/solution/*.sppkg
 
-      - uses: OfficeDev/teamsfx-cli-action@v0
+      - uses: OfficeDev/teamsfx-cli-action@v1
         with:
           commands: validate
       
-      - uses: OfficeDev/teamsfx-cli-action@v0
+      - uses: OfficeDev/teamsfx-cli-action@v1
         with:
           commands: build
 
@@ -66,6 +66,6 @@ jobs:
           name: appPackage_zip
           path: ./.fx/appPackage.zip
 
-      - uses: OfficeDev/teamsfx-cli-action@v0
+      - uses: OfficeDev/teamsfx-cli-action@v1
         with:
           commands: publish
