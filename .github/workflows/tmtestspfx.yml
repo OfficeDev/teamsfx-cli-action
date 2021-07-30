@@ -1,0 +1,71 @@
+name: SPFx Project Test
+
+on:
+  # When new commits are pushed onto the branch.
+  push:
+    branches:
+      - tmtestspfx
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      AZURE_ACCOUNT_NAME: ${{secrets.AZURE_ACCOUNT_NAME}}
+      AZURE_ACCOUNT_PASSWORD: ${{secrets.AZURE_ACCOUNT_PASSWORD}}
+      AZURE_SUBSCRIPTION_ID: ${{secrets.AZURE_SUBSCRIPTION_ID}}
+      AZURE_TENANT_ID: ${{secrets.AZURE_TENANT_ID}}
+      M365_ACCOUNT_NAME: ${{secrets.TMTEST_M365_ACCOUNT_NAME}}
+      M365_ACCOUNT_PASSWORD: ${{secrets.TMTEST_M365_ACCOUNT_PASSWORD}}
+
+      # If the hosting environment is not provisioned, set this environment variable to true.
+      # or if it's provisioned and has not updates, set this environment variable to false.
+      TEAMSFX_RUN_PROVISION: true
+
+    steps:
+      - name: Setup repo
+        uses: actions/checkout@v2
+        with:
+          ref: tmtestspfx
+
+      - name: Provision hosting environment
+        if: env.TEAMSFX_RUN_PROVISION == 'true'
+        uses: OfficeDev/teamsfx-cli-action@v0
+        with:
+          commands: provision
+
+      - name: Commit provision configs if necessary
+        if: env.TEAMSFX_RUN_PROVISION == 'true'
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "chore: commit provision configs"
+          file_pattern: .fx/*
+          add_options: "-f"
+      
+      
+      - uses: OfficeDev/teamsfx-cli-action@v0
+        with:
+          commands: deploy
+
+      - name: Upload sppkg file
+        uses: actions/upload-artifact@v2
+        with:
+          name: sppkg_zip
+          path: ./SPFx/sharepoint/solution/*.sppkg
+
+      - uses: OfficeDev/teamsfx-cli-action@v0
+        with:
+          commands: validate
+      
+      - uses: OfficeDev/teamsfx-cli-action@v0
+        with:
+          commands: build
+
+      - name: Upload build file
+        uses: actions/upload-artifact@v2
+        with:
+          name: appPackage_zip
+          path: ./.fx/appPackage.zip
+
+      - uses: OfficeDev/teamsfx-cli-action@v0
+        with:
+          commands: publish
