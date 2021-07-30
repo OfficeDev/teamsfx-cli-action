@@ -34,7 +34,7 @@ export function BuildCommandString(): string {
     }
   }
 
-  return [Commands.TeamsfxCliName]
+  return [Commands.TeamsfxCliName()]
     .concat(commands)
     .concat(optionsPart)
     .join(' ')

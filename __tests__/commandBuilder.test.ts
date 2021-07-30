@@ -36,7 +36,7 @@ describe('Test BuildCommandString', () => {
     // Assert
     expect(cmdStr).toBe(
       [
-        Commands.TeamsfxCliName,
+        Commands.TeamsfxCliName(),
         'resource',
         'add',
         'azure-sql',
@@ -57,7 +57,9 @@ describe('Test BuildCommandString', () => {
 
     // Assert
     expect(cmdStr).toBe(
-      [Commands.TeamsfxCliName, '--version', 'true'].join(Commands.CommandSpace)
+      [Commands.TeamsfxCliName(), '--version', 'true'].join(
+        Commands.CommandSpace
+      )
     )
   })
 
@@ -79,7 +81,7 @@ describe('Test BuildCommandString', () => {
     // Assert
     expect(cmdStr).toBe(
       [
-        Commands.TeamsfxCliName,
+        Commands.TeamsfxCliName(),
         'new',
         '--debug',
         'true',
@@ -107,7 +109,7 @@ describe('Test BuildCommandString', () => {
 
     // Assert
     expect(cmdStr).toBe(
-      [Commands.TeamsfxCliName, 'provision', '--subscription', '123456'].join(
+      [Commands.TeamsfxCliName(), 'provision', '--subscription', '123456'].join(
         Commands.CommandSpace
       )
     )
