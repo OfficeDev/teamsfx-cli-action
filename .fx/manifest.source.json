@@ -1,8 +1,8 @@
 {
     "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.9/MicrosoftTeams.schema.json",
     "manifestVersion": "1.9",
-    "packageName": "tmtestspfx",
-    "id": "e952b3ac-3b51-4669-bf92-5e7700510e7e",
+    "packageName": "tmtestspfx802helloworld",
+    "id": "0d4d54bd-ceac-4289-911f-e952c00b9632",
     "version": "1.0.0",
     "developer": {
         "name": "SPFx + Teams Dev",
@@ -11,11 +11,11 @@
         "termsOfUseUrl": "https://www.microsoft.com/en-us/servicesagreement"
     },
     "name": {
-        "short": "tmtestspfx"
+        "short": "tmtestspfx802helloworld"
     },
     "description": {
-        "short": "tmtestspfx",
-        "full": "tmtestspfx"
+        "short": "tmtestspfx802helloworld",
+        "full": "tmtestspfx802helloworld"
     },
     "icons": {
         "outline": "outline.png",
@@ -24,9 +24,9 @@
     "accentColor": "#004578",
     "staticTabs": [
         {
-            "entityId": "e952b3ac-3b51-4669-bf92-5e7700510e7e",
-            "name": "tmtestspfx",
-            "contentUrl": "https://{teamSiteDomain}/_layouts/15/TeamsLogon.aspx?SPFX=true&dest=/_layouts/15/teamshostedapp.aspx%3Fteams%26personal%26componentId=e952b3ac-3b51-4669-bf92-5e7700510e7e%26forceLocale={locale}",
+            "entityId": "0d4d54bd-ceac-4289-911f-e952c00b9632",
+            "name": "tmtestspfx802helloworld",
+            "contentUrl": "https://{teamSiteDomain}/_layouts/15/TeamsLogon.aspx?SPFX=true&dest=/_layouts/15/teamshostedapp.aspx%3Fteams%26personal%26componentId=0d4d54bd-ceac-4289-911f-e952c00b9632%26forceLocale={locale}",
             "websiteUrl": "https://products.office.com/en-us/sharepoint/collaboration",
             "scopes": [
                 "personal"
@@ -35,7 +35,7 @@
     ],
     "configurableTabs": [
         {
-            "configurationUrl": "https://{teamSiteDomain}{teamSitePath}/_layouts/15/TeamsLogon.aspx?SPFX=true&dest={teamSitePath}/_layouts/15/teamshostedapp.aspx%3FopenPropertyPane=true%26teams%26componentId=e952b3ac-3b51-4669-bf92-5e7700510e7e%26forceLocale={locale}",
+            "configurationUrl": "https://{teamSiteDomain}{teamSitePath}/_layouts/15/TeamsLogon.aspx?SPFX=true&dest={teamSitePath}/_layouts/15/teamshostedapp.aspx%3FopenPropertyPane=true%26teams%26componentId=0d4d54bd-ceac-4289-911f-e952c00b9632%26forceLocale={locale}",
             "canUpdateConfiguration": true,
             "scopes": [
                 "team"

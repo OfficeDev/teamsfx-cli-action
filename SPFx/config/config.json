@@ -2,18 +2,18 @@
     "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
     "version": "2.0",
     "bundles": {
-      "tmtestspfx-web-part": {
+      "tmtestspfx-802-helloworld-web-part": {
         "components": [
           {
-            "entrypoint": "./lib/webparts/tmtestspfx/TmtestspfxWebPart.js",
-            "manifest": "./src/webparts/tmtestspfx/TmtestspfxWebPart.manifest.json"
+            "entrypoint": "./lib/webparts/tmtestspfx802Helloworld/Tmtestspfx802HelloworldWebPart.js",
+            "manifest": "./src/webparts/tmtestspfx802Helloworld/Tmtestspfx802HelloworldWebPart.manifest.json"
           }
         ]
       }
     },
     "externals": {},
     "localizedResources": {
-      "TmtestspfxWebPartStrings": "lib/webparts/tmtestspfx/loc/{locale}.js"
+      "Tmtestspfx802HelloworldWebPartStrings": "lib/webparts/tmtestspfx802Helloworld/loc/{locale}.js"
     }
   }
   

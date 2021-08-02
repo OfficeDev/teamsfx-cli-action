@@ -1,8 +1,8 @@
 {
     "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
     "solution": {
-        "name": "tmtestspfx-client-side-solution",
-        "id": "e952b3ac-3b51-4669-bf92-5e7700510e7e",
+        "name": "tmtestspfx-802-client-side-solution",
+        "id": "0d4d54bd-ceac-4289-911f-e952c00b9632",
         "version": "1.0.0.0",
         "includeClientSideAssets": true,
         "skipFeatureDeployment": true,
@@ -16,6 +16,6 @@
         }
     },
     "paths": {
-        "zippedPackage": "solution/tmtestspfx.sppkg"
+        "zippedPackage": "solution/tmtestspfx-802.sppkg"
     }
 }
