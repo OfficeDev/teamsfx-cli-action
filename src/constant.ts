@@ -8,12 +8,7 @@ export class ActionInputs {
 
 export class Commands {
   static readonly CommandSpace: string = ' '
-  static readonly DefaultTeamsfxCliVersion: string = '0.3.1'
-  static readonly TeamsfxCliName = (
-    cliVersion: string = process.env.TEAMSFX_CLI_VERSION
-      ? process.env.TEAMSFX_CLI_VERSION
-      : Commands.DefaultTeamsfxCliVersion
-  ): string => `npx -p @microsoft/teamsfx-cli@${cliVersion} teamsfx`
+  static readonly TeamsfxCliName: string = `npx teamsfx`
   static readonly AddOptionPrefix = (optionName: string): string =>
     `--${optionName}`
 }
