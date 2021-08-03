@@ -11,6 +11,7 @@ export class Commands {
   static readonly TeamsfxCliName: string = `npx teamsfx`
   static readonly AddOptionPrefix = (optionName: string): string =>
     `--${optionName}`
+  static readonly NpmCi: string = 'npm ci'
 }
 
 export class ErrorNames {
