@@ -10,10 +10,11 @@ export class ActionInputs {
 
 export class Commands {
   static readonly CommandSpace: string = ' '
-  static readonly TeamsfxCliName: string = `npx teamsfx`
+  static readonly TeamsfxCliName: string = 'npx teamsfx'
   static readonly AddOptionPrefix = (optionName: string): string =>
     `--${optionName}`
   static readonly NpmCi: string = 'npm ci'
+  static readonly NpmInstall: string = 'npm install'
 }
 
 export class ErrorNames {

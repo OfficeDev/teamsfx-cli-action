@@ -15,13 +15,13 @@ async function run(): Promise<void> {
     if (!process.env.GITHUB_WORKSPACE) {
       throw new InternalError(Messages.GitHubWorkspaceShouldNotBeUndefined)
     }
-    // To use project level teamsfx-cli, run `npm ci` first.
+    // To use project level teamsfx-cli, run `npm install` first.
     if (
       !(await fs.pathExists(
         Pathes.TeamsfxCliPath(process.env.GITHUB_WORKSPACE)
       ))
     ) {
-      await Execute(Commands.NpmCi)
+      await Execute(Commands.NpmInstall)
     }
     // Construct a command string from inputs.
     const commandString = BuildCommandString()
