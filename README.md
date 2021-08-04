@@ -9,11 +9,13 @@ More definition of Teams CLI GitHub Action is here in [action.yml](https://githu
 
 ### Dependencies on the project
 Please make sure the project uses [TeamsFx CLI](https://www.npmjs.com/package/@microsoft/teamsfx-cli) as its dev dependency in the root `package.json` like below:
+
 `
   "devDependencies": {
     "@microsoft/teamsfx-cli": "^0.3.1"
   }
 `
+
 PS: Make sure the version specified in dev dependencies is compatible with your project. 
 
 ### Dependencies on other GitHub Actions
