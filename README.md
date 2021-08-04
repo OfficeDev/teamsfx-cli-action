@@ -7,6 +7,15 @@ More definition of Teams CLI GitHub Action is here in [action.yml](https://githu
 
 ## Sample workflow 
 
+### Dependencies on the project
+Please make sure the project uses [TeamsFx CLI](https://www.npmjs.com/package/@microsoft/teamsfx-cli) as its dev dependency in the root `package.json` like below:
+`
+  "devDependencies": {
+    "@microsoft/teamsfx-cli": "^0.3.1"
+  }
+`
+PS: Make sure the version specified in dev dependencies is compatible with your project. 
+
 ### Dependencies on other GitHub Actions
 * [Checkout](https://github.com/actions/checkout) – **Required** To checkout the project code presents in your repository
 ### Workflow example for Continuous Deployment
@@ -58,8 +67,6 @@ jobs:
         with:
           commands: publish
 ```
-### Specify teamsfx cli's version
-To specify the version of [TeamsFx CLI](https://www.npmjs.com/package/@microsoft/teamsfx-cli), you can set the environment variable `TEAMSFX_CLI_VERSION` like the example workflow above. If the version is not specified, default version of `0.3.1` will be used.
 
 ### Configure M365/Azure credentials as GitHub Secret:
 
