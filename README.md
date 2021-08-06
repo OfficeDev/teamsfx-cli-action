@@ -42,27 +42,17 @@ jobs:
       M365_ACCOUNT_PASSWORD: ${{secrets.M365_ACCOUNT_PASSWORD}}
       M365_TENANT_ID: ${{secrets.M365_TENANT_ID}}
 
-      TEAMSFX_CLI_VERSION: 0.3.1
-
     steps:
-      # Checkout the code.
-      - uses: actions/checkout@v2
-      
       # Provision resources.
-      - uses: OfficeDev/teamsfx-cli-action@v0
+      - uses: OfficeDev/teamsfx-cli-action@v1
         with:
           commands: provision
           subscription: ${{env.AZURE_SUBSCRIPTION_ID}}
     
       # Deploy the code.
-      - uses: OfficeDev/teamsfx-cli-action@v0
+      - uses: OfficeDev/teamsfx-cli-action@v1
         with:
           commands: deploy
-
-      # Validate the manifest.
-      - uses: OfficeDev/teamsfx-cli-action@v0
-        with:
-          commands: validate
 
       # Publish the Teams App.
       - uses: OfficeDev/teamsfx-cli-action@v0
