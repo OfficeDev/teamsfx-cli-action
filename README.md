@@ -16,7 +16,7 @@ Please make sure the project uses [TeamsFx CLI](https://www.npmjs.com/package/@m
   }
 `
 
-PS: This GitHub Action is compatible with TeamsFx CLI in range of `0.*`. 
+PS: This GitHub Action in version `v1` is compatible with TeamsFx CLI in range of `0.*`. 
 
 ### Dependencies on other GitHub Actions
 * [Checkout](https://github.com/actions/checkout) – **Required** To checkout the project code presents in your repository
