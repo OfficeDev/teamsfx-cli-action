@@ -1,0 +1,71 @@
+name: 'TeamsFx CLI Action'
+description: 'GitHub Action to help Teams App Developers build their CI/CD workflows.'
+inputs:
+  commands:
+    description: 'The commands list in order which includes top-commands, sub-commands and positional parameters.'
+  verbose:
+    description: 'Print additional information.'
+  version:
+    description: 'Show version number.'
+  debug:
+    description: 'Print diagnostic information.'
+  help:
+    description: 'Show help.'
+  action:
+    description: 'Account action including show|login|logout|set.'
+  tenant:
+    description: 'Authenticate with a specific Azure Active Directory tenant.'
+  folder:
+    description: 'Select root folder of the project.'
+  subscription:
+    description: 'Specify the subscription id.'
+  interactive:
+    description: 'Select the options interactively.'
+  scratch:
+    description: 'Teams Toolkit: Create a new Teams app.'
+  host-type:
+    description: 'Frontend hosting type.'
+  spfx-framework-type:
+    description: 'Framework.'
+  spfx-webpart-name:
+    description: 'Web Part Name.'
+  spfx-webpart-desp:
+    description: 'Web Part Description'
+  azure-resources:
+    description: 'Cloud resources.'
+  capabilities:
+    description: 'Select capabilities.'
+  way-to-register-bot:
+    description: 'Select the way to do bot registration.'
+  bot-id:
+    description: 'Enter bot id.'
+  bot-password:
+    description: 'Enter bot password.'
+  programming-language:
+    description: 'Programming Language.'
+  app-name:
+    description: 'Application name.'
+  samples:
+    description: 'Start from a sample.'
+  sql-admin-name:
+    description: 'Admin name of SQL.'
+  sql-password:
+    description: 'Admin password of SQL.'
+  open-api-document:
+    description: 'The Open API document file path.'
+  api-prefix:
+    description: 'The API name prefix.'
+  api-version:
+    description: 'The API version.'
+  environment:
+    description: 'Environment: local or remote.'
+  endpoint:
+    description: 'Teams app endpoint.'
+  root-path:
+    description: 'Path to the setting files.'
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
+branding:
+  icon: 'refresh-cw'
+  color: 'purple'
