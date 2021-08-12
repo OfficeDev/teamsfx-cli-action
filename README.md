@@ -77,9 +77,9 @@ To use any credentials, add them as [secrets](https://docs.github.com/en/actions
 
 *PS:* To make these credentials work in environment variables, there should not exist any interactive part of the login process, so extra configurations should be made. These operations have risks, so be aware of that and try to make your password complicated, and the way to login by service principal in environment variables will be supported in the future.
 * For M365 account, the multi-factor authentication should be disabled.
-  1. Login to [Microsoft 365 admin center](https://admin.microsoft.com/).
-  2. Click Users > Active users > Multi-factor authentication.
-  3. Select the M365 account you want to configure, click `disable` from the right panel.
+1. Login to [Microsoft 365 admin center](https://admin.microsoft.com/).
+2. Click Users > Active users > Multi-factor authentication.
+3. Select the M365 account you want to configure, click `disable` from the right panel.
 * For Azure account, the account's security defaults under the specific tenant which resources will be provisioned in should be turned off, and please refer to [Disabling security defaults](https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/concept-fundamentals-security-defaults#disabling-security-defaults).
 
 In the meantime, the Azure/M365 accounts provided here should have sufficient permissions.
