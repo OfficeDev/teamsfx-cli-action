@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT license.
+
 import {BuildCommandString} from '../src/utils/commandBuilder'
 import {getInput, getMultilineInput} from '@actions/core'
 import {Commands} from '../src/constant'
