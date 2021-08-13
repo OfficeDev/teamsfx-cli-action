@@ -76,7 +76,7 @@ To use any credentials, add them as [secrets](https://docs.github.com/en/actions
 |M365_TENANT_ID|To identify the tenant in which the Teams App will be created/published.|
 
 *PS:* To make these credentials work in environment variables, there should not exist any interactive part of the login process, so extra configurations should be made. These operations have risks, so be aware of that and try to make your password complicated, and the way to login by service principal in environment variables will be supported in the future.
-* For M365 account, the multi-factor authentication should be disabled.
+* For M365 account, the multi-factor authentication should be disabled (needs org admin's permission).
 1. Login to [Microsoft 365 admin center](https://admin.microsoft.com/).
 2. Click Users > Active users > Multi-factor authentication.
 3. Select the M365 account you want to configure, click `disable` from the right panel.
