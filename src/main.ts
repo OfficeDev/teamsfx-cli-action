@@ -23,6 +23,9 @@ async function run(): Promise<void> {
     ) {
       await Execute(Commands.NpmInstall)
     }
+    // Set run-from = GitHubAction before run cli.
+    await Execute(Commands.SetConfigRunFromAction)
+
     // Construct a command string from inputs.
     const commandString = BuildCommandString()
     await Execute(commandString)

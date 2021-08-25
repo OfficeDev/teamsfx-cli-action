@@ -15,6 +15,8 @@ export class Commands {
     `--${optionName}`
   static readonly NpmCi: string = 'npm ci'
   static readonly NpmInstall: string = 'npm install'
+  static readonly SetConfigRunFromAction: string =
+    'npx teamsfx config set run-from GitHubAction'
 }
 
 export class ErrorNames {
