@@ -115,4 +115,25 @@ describe('Test BuildCommandString', () => {
       )
     )
   })
+
+  test('Case 5: Specify Env', () => {
+    // Arrange
+    singleInputs = {
+      env: 'dev'
+    }
+
+    multipleInputs = {
+      commands: ['provision']
+    }
+
+    // Act
+    const cmdStr = BuildCommandString()
+
+    // Assert
+    expect(cmdStr).toBe(
+      [Commands.TeamsfxCliName, 'provision', '--env', 'dev'].join(
+        Commands.CommandSpace
+      )
+    )
+  })
 })

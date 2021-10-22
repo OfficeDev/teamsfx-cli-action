@@ -30,5 +30,6 @@ export enum SingleOptions {
   ApiVersion = 'api-version',
   Environment = 'environment',
   Endpoint = 'endpoint',
-  RootPath = 'root-path'
+  RootPath = 'root-path',
+  Env = 'env'
 }

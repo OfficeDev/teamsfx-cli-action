@@ -63,6 +63,8 @@ inputs:
     description: 'Teams app endpoint.'
   root-path:
     description: 'Path to the setting files.'
+  env:
+    description: 'Select an existing environment for the project.'
 runs:
   using: 'node12'
   main: 'dist/index.js'
