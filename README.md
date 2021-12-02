@@ -51,8 +51,6 @@ jobs:
  
       # Provision resources.
       - uses: OfficeDev/teamsfx-cli-action@v1
-        env:
-          TEAMSFX_BICEP_ENV_CHECKER_ENABLE: true
         with:
           commands: provision
           subscription: ${{env.AZURE_SUBSCRIPTION_ID}}
