@@ -141,8 +141,8 @@ describe('Test BuildCommandString', () => {
     // Arrange
     singleInputs = {
       'service-principal': 'true',
-      'username': 'appid',
-      'password': 'somepass'
+      username: 'appid',
+      password: 'somepass'
     }
 
     multipleInputs = {
@@ -154,11 +154,18 @@ describe('Test BuildCommandString', () => {
 
     // Assert
     expect(cmdStr).toBe(
-      [Commands.TeamsfxCliName, 'account', 'login', 'azure', '--service-principal', 'true', 
-       '--username', 'appid', '--password', 'somepass'].join(
-        Commands.CommandSpace
-      )
+      [
+        Commands.TeamsfxCliName,
+        'account',
+        'login',
+        'azure',
+        '--service-principal',
+        'true',
+        '--username',
+        'appid',
+        '--password',
+        'somepass'
+      ].join(Commands.CommandSpace)
     )
   })
-
 })
