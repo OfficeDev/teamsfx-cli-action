@@ -65,6 +65,12 @@ inputs:
     description: 'Path to the setting files.'
   env:
     description: 'Select an existing environment for the project.'
+  service-principal:
+    description: 'Enable login Azure by service principal.'
+  username:
+    description: 'Username for login.'
+  password:
+    description: 'Password for login.'
 runs:
   using: 'node12'
   main: 'dist/index.js'

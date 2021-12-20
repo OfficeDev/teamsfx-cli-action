@@ -136,4 +136,36 @@ describe('Test BuildCommandString', () => {
       )
     )
   })
+
+  test('Case 6: Login Azure by Service Principal', () => {
+    // Arrange
+    singleInputs = {
+      'service-principal': 'true',
+      username: 'appid',
+      password: 'somepass'
+    }
+
+    multipleInputs = {
+      commands: ['account', 'login', 'azure']
+    }
+
+    // Act
+    const cmdStr = BuildCommandString()
+
+    // Assert
+    expect(cmdStr).toBe(
+      [
+        Commands.TeamsfxCliName,
+        'account',
+        'login',
+        'azure',
+        '--service-principal',
+        'true',
+        '--username',
+        'appid',
+        '--password',
+        'somepass'
+      ].join(Commands.CommandSpace)
+    )
+  })
 })

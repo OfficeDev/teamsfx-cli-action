@@ -31,5 +31,8 @@ export enum SingleOptions {
   Environment = 'environment',
   Endpoint = 'endpoint',
   RootPath = 'root-path',
-  Env = 'env'
+  Env = 'env',
+  ServicePrincipal = 'service-principal',
+  UserName = 'username',
+  Password = 'password'
 }
