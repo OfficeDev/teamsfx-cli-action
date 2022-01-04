@@ -34,8 +34,9 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     env:
-      AZURE_SUBSCRIPTION_ID: ${{secrets.AZURE_SUBSCRIPTION_ID}}
-
+      M365_ACCOUNT_NAME: ${{secrets.M365_ACCOUNT_NAME}}
+      M365_ACCOUNT_PASSWORD: ${{secrets.M365_ACCOUNT_PASSWORD}}
+      M365_TENANT_ID: ${{secrets.M365_TENANT_ID}}
       # To specify the env name for multi-env feature.
       TEAMSFX_ENV_NAME: staging
     steps:
@@ -53,7 +54,7 @@ jobs:
       - uses: OfficeDev/teamsfx-cli-action@v1
         with:
           commands: provision
-          subscription: ${{env.AZURE_SUBSCRIPTION_ID}}
+          subscription: ${{secrets.AZURE_SUBSCRIPTION_ID}}
           env: ${{env.TEAMSFX_ENV_NAME}}
     
       # Deploy the code.
@@ -61,19 +62,34 @@ jobs:
         with:
           commands: deploy
           env: ${{env.TEAMSFX_ENV_NAME}}
+
+      # Publish the Teams App.
+      - uses: OfficeDev/teamsfx-cli-action@v1
+        with:
+          commands: publish
+          env: ${{env.TEAMSFX_ENV_NAME}}
 ```
 
-### Configure credentials as GitHub Secret:
+### Configure M365/Azure credentials as GitHub Secret:
 
 To use any credentials, add them as [secrets](https://docs.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets) in the GitHub repository and then use them in the workflow.
 
-The table below lists all of the credentials required to login Azure by service principal. 
+The table below lists all of the credentials required to login Azure and M365.
 |Name|Description|
 |---|---|
 |AZURE_SERVICE_PRINCIPAL_NAME|The service principal name of Azure used to provision resources.|
 |AZURE_SERVICE_PRINCIPAL_PASSWORD|The password of Azure service principal.|
 |AZURE_SUBSCRIPTION_ID|To identify the subscription in which the resources will be provisioned.|
 |AZURE_TENANT_ID|To identify the tenant in which the subscription resides.|
+|M365_ACCOUNT_NAME|The M365 account for creating and publishing Teams App.|
+|M365_ACCOUNT_PASSWORD|The password of M365 account.|
+|M365_TENANT_ID|To identify the tenant in which the Teams App will be created/published.|
+
+*PS:* To make M365 account credentials work in environment variables, there should not exist any interactive part of the login process, so extra configurations should be made. These operations have risks, so be aware of that and try to make your password complicated, and the way to login by device code will be supported in the future.
+* For M365 account, the multi-factor authentication should be disabled (needs org admin's permission).
+1. Login to [Microsoft 365 admin center](https://admin.microsoft.com/).
+2. Click Users > Active users > Multi-factor authentication.
+3. Select the M365 account you want to configure, click `disable` from the right panel.
 
 To create Azure service principals for use, refer to [here](#how-to-create-azure-service-principals-for-use).
 
@@ -90,7 +106,13 @@ For detailed guidelines, refer to [the official document](https://docs.microsoft
 
 # Data Collection. 
 
-The software is built based on [TeamsFx CLI](https://github.com/OfficeDev/TeamsFx/tree/main/packages/cli), TeamsFx CLI may collect information about you and your use of the software and send it to Microsoft. Microsoft may use this information to provide services and improve our products and services. You may turn off the telemetry by running `teamsfx config set telemetry off` command. There are also some features in the software that may enable you and Microsoft to collect data from users of your applications. If you use these features, you must comply with applicable law, including providing appropriate notices to users of your applications together with a copy of Microsoft’s privacy statement. Our privacy statement is located at https://go.microsoft.com/fwlink/?LinkID=824704. You can learn more about data collection and use in the help documentation and our privacy statement. Your use of the software operates as your consent to these practices.
+The software is built based on [TeamsFx CLI](https://github.com/OfficeDev/TeamsFx/tree/main/packages/cli), TeamsFx CLI may collect information about you and your use of the software and send it to Microsoft. Microsoft may use this information to provide services and improve our products and services. You may turn off the telemetry by adding one step like below:
+```
+    - uses: OfficeDev/teamsfx-cli-action@v1
+        with:
+          commands: config set telemetry off
+```
+There are also some features in the software that may enable you and Microsoft to collect data from users of your applications. If you use these features, you must comply with applicable law, including providing appropriate notices to users of your applications together with a copy of Microsoft’s privacy statement. Our privacy statement is located at https://go.microsoft.com/fwlink/?LinkID=824704. You can learn more about data collection and use in the help documentation and our privacy statement. Your use of the software operates as your consent to these practices.
 
 ## Reporting security issues and bugs
 
