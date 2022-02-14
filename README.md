@@ -3,7 +3,13 @@
 
 The TeamsFx CLI GitHub Action is an integration of [TeamsFx CLI](https://www.npmjs.com/package/@microsoft/teamsfx-cli) commands, which helps Teams app developers to automate their CI/CD workflow.
 
-More definition of Teams CLI GitHub Action is here in [action.yml](https://github.com/OfficeDev/teamsfx-cli-action/blob/main/action.yml).
+## Usage
+The GitHub Action does simply map [TeamsFx CLI](https://www.npmjs.com/package/@microsoft/teamsfx-cli)'s signature into GitHub Action's. Check [TeamsFx CLI User Manual](https://docs.microsoft.com/en-us/microsoftteams/platform/toolkit/teamsfx-cli) for in-depth details.
+
+### Inputs
+* `commands` - The commands list in order which includes top-commands, sub-commands and positional parameters.
+Other inputs map to [TeamsFx CLI](https://www.npmjs.com/package/@microsoft/teamsfx-cli)'s options and depend on `commands`. To check full version of the remaining inputs, please click [action.yml](https://github.com/OfficeDev/teamsfx-cli-action/blob/main/action.yml). To check which options are used by a specific commands signature
+### Outputs
 
 ## Sample workflow 
 
