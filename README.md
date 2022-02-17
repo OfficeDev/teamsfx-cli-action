@@ -8,8 +8,7 @@ The GitHub Action does simply map [TeamsFx CLI](https://www.npmjs.com/package/@m
 
 ### Inputs
 * `commands` - The commands list in order which includes top-commands, sub-commands and positional parameters.
-Other inputs map to [TeamsFx CLI](https://www.npmjs.com/package/@microsoft/teamsfx-cli)'s options and depend on `commands`. To check full version of the remaining inputs, please click [action.yml](https://github.com/OfficeDev/teamsfx-cli-action/blob/main/action.yml). To check which options are used by a specific commands signature
-### Outputs
+* Other inputs map to [TeamsFx CLI](https://www.npmjs.com/package/@microsoft/teamsfx-cli)'s options and depend on `commands`. To check full version of the remaining inputs, please click [action.yml](https://github.com/OfficeDev/teamsfx-cli-action/blob/main/action.yml).
 
 ## Sample workflow 
 
