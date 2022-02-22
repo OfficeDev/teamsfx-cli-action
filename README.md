@@ -13,6 +13,7 @@ The GitHub Action does simply map [TeamsFx CLI](https://www.npmjs.com/package/@m
 ### Supported Commands
 
 |`commands`|Descriptions|
+|:----------------  |:-------------|
 |`account login azure`|Login Azure by service principal.|
 |`provision`|Provision the cloud resources in the current application.|
 |`deploy`|Deploy the current application.|
