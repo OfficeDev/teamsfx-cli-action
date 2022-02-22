@@ -55,7 +55,7 @@ This command is used to deploy the current application. By default it will deplo
 ### Parameters for `commands: deploy`
 
 | Parameters  | Required | Descriptions |
-|:----------------  |:-------------|:-------------|
+|:----------------------------  |:-------------|:-------------|
 |`env`| Yes| Select an existing environment for the project. |
 |`open-api-document`| No | Applicable when there is APIM resource in the project. The Open API document file path. |
 |`api-prefix`| No | Applicable when there is APIM resource in the project. The API name prefix. The default unique name of the API will be `{api-prefix}-{resource-suffix}-{api-version}`. |
