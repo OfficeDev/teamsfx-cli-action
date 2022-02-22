@@ -10,6 +10,91 @@ The GitHub Action does simply map [TeamsFx CLI](https://www.npmjs.com/package/@m
 * `commands` - The commands list in order which includes top-commands, sub-commands and positional parameters.
 * Other inputs map to [TeamsFx CLI](https://www.npmjs.com/package/@microsoft/teamsfx-cli)'s options and depend on `commands`. To check full version of the remaining inputs, please click [action.yml](https://github.com/OfficeDev/teamsfx-cli-action/blob/main/action.yml).
 
+### Supported Commands
+
+|`commands`|Descriptions|
+|`account login azure`|Login Azure by service principal.|
+|`provision`|Provision the cloud resources in the current application.|
+|`deploy`|Deploy the current application.|
+|`package`|Build your Teams app into a package for publishing.|
+|`publish`|Publish the app to Teams.|
+|`config`|Manage the configuration data either in user scope or project scope.|
+
+## `commands: account login azure`
+
+Support login azure with a service principal using client secret or client certificate.
+
+### Parameters for `commands: account login azure`
+
+| Parameters  | Required | Descriptions |
+|:----------------  |:-------------|:-------------|
+|`service-principal`| Yes | Specify login type by service principal. |
+|`username`| Yes | Client ID for service principal. |
+|`password`| Yes | Provide client secret or a pem file with key and public certificate. | 
+|`tenant`| Yes | Authenticate with a specific Azure Active Directory tenant. |
+
+## `commands: provision`
+
+Provision the cloud resources in the current application.
+
+### Parameters for `commands: provision`
+
+| Parameters  | Required | Descriptions |
+|:----------------  |:-------------|:-------------|
+|`env`| Yes | Select an environment for the project. | 
+|`subscription`| No | Specify an Azure Subscription ID. |
+|`resource-group`| No | Set the name of an existing resource group. |
+|`sql-admin-name`| No | Applicable when there is SQL resource in the project. Admin name of SQL. |
+|`sql-password`| No | Applicable when there is SQL resource in the project. Admin password of SQL. |
+
+## `commands: deploy`
+
+This command is used to deploy the current application. By default it will deploy entire project but it's also possible to deploy partially. Options(Multiple) are: `frontend-hosting`, `function`, `apim`, `teamsbot`, `spfx`.
+
+### Parameters for `commands: deploy`
+
+| Parameters  | Required | Descriptions |
+|:----------------  |:-------------|:-------------|
+|`env`| Yes| Select an existing environment for the project. |
+|`open-api-document`| No | Applicable when there is APIM resource in the project. The Open API document file path. |
+|`api-prefix`| No | Applicable when there is APIM resource in the project. The API name prefix. The default unique name of the API will be `{api-prefix}-{resource-suffix}-{api-version}`. |
+|`api-version`| No | Applicable when there is APIM resource in the project. The API version. | 
+
+## `commands: package`
+
+Build your Teams app into a package for publishing.
+
+### Parameters for `commands: package`
+
+| Parameters  | Required | Descriptions |
+|:----------------  |:-------------|:-------------|
+|`env`| Yes| Select an existing environment for the project. |
+
+## `commands: publish`
+
+Publish the app to Teams.
+
+### Parameters for `commands: publish`
+
+| Parameters  | Required | Descriptions |
+|:----------------  |:-------------|:-------------|
+|`env`| Yes| Select an existing environment for the project. |
+
+## `commands: config`
+
+Manage the configuration data either in user scope or project scope.
+
+| `commands: config` Commands  | Descriptions |
+|:----------------  |:-------------|
+| `commands: config get [option]` | View the configuration value of option |
+| `commands: config set <option> <value>` | Update the configuration value of option |
+
+### Parameters for `commands: config`
+
+| Parameters  | Required | Descriptions |
+|:----------------  |:-------------|:-------------|
+|`env`| Yes | Select an existing environment for the project. |
+
 ## Sample workflow 
 
 ### Dependencies on the project
