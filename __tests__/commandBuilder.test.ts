@@ -142,7 +142,7 @@ describe('Test BuildCommandString', () => {
     singleInputs = {
       'service-principal': 'true',
       username: 'appid',
-      password: 'somepass'
+      password: ''
     }
 
     multipleInputs = {
@@ -164,7 +164,7 @@ describe('Test BuildCommandString', () => {
         '--username',
         'appid',
         '--password',
-        'somepass'
+        ''
       ].join(Commands.CommandSpace)
     )
   })
