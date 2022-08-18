@@ -103,11 +103,11 @@ Please make sure the project uses [TeamsFx CLI](https://www.npmjs.com/package/@m
 
 `
   "devDependencies": {
-    "@microsoft/teamsfx-cli": "^0.8.0"
+    "@microsoft/teamsfx-cli": "1.*"
   }
 `
 
-PS: This GitHub Action in version `v1` is compatible with TeamsFx CLI in range of `0.*`, and we recommend to use the lastest version of TeamsFx CLI.
+PS: This GitHub Action in version `v1` is compatible with TeamsFx CLI in range of `0.*` and `1.*`, and we recommend to use the latest version of TeamsFx CLI.
 
 ### Dependencies on other GitHub Actions
 * [Checkout](https://github.com/actions/checkout) – **Required** To checkout the project code presents in your repository
