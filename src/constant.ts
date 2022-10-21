@@ -6,6 +6,7 @@ import path from 'path'
 /* eslint-disable @typescript-eslint/no-extraneous-class */
 export class ActionInputs {
   static readonly Commands: string = 'commands'
+  static readonly CliVersion: string = 'cli-version'
 }
 
 export class Commands {
@@ -15,6 +16,8 @@ export class Commands {
     `--${optionName}`
   static readonly NpmCi: string = 'npm ci'
   static readonly NpmInstall: string = 'npm install'
+  static readonly NpmInstallTTKCli = (cliVersion: string): string =>
+    `npm install @microsoft/teamsfx-cli@${cliVersion}`
   static readonly SetConfigRunFromAction: string =
     'npx teamsfx config set run-from GitHubAction'
 }
@@ -33,6 +36,8 @@ export class Suggestions {
 export class Pathes {
   static readonly TeamsfxCliPath = (workdir: string) =>
     path.join(workdir, 'node_modules', '@microsoft', 'teamsfx-cli')
+  static readonly PacakgeJsonPath = (workdir: string) =>
+    path.join(workdir, 'pacakge.json')
 }
 
 export class Messages {
