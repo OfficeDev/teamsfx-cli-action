@@ -1,6 +1,8 @@
 name: 'TeamsFx CLI Action'
 description: 'GitHub Action to help Teams App Developers build their CI/CD workflows.'
 inputs:
+  cli-version:
+    description: 'The version of TTK CLi for use.'
   commands:
     description: 'The commands list in order which includes top-commands, sub-commands and positional parameters.'
   verbose:

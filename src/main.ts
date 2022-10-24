@@ -4,7 +4,7 @@
 import * as core from '@actions/core'
 import * as fs from 'fs-extra'
 import {BaseError} from './baseError'
-import {Commands, Pathes, Messages} from './constant'
+import {Commands, Pathes, Messages, ActionInputs} from './constant'
 import {InternalError} from './errors'
 import {BuildCommandString} from './utils/commandBuilder'
 import {Execute} from './utils/exec'
@@ -15,14 +15,29 @@ async function run(): Promise<void> {
     if (!process.env.GITHUB_WORKSPACE) {
       throw new InternalError(Messages.GitHubWorkspaceShouldNotBeUndefined)
     }
-    // To use project level teamsfx-cli, run `npm install` first.
+    // To make the logic compatible for V3.
+    // If package.json exists under root:
+    //  Keep the legacy logic to repect TTK CLI version in it.
+    // else - the V3 case:
+    //  Read cli-version from inputs, and install the target version of TTK CLI.
+    let ttkCliInstallCmd
+    if (
+      await fs.pathExists(Pathes.PacakgeJsonPath(process.env.GITHUB_WORKSPACE))
+    ) {
+      ttkCliInstallCmd = Commands.NpmInstall
+    } else {
+      const cliVersion = core.getInput(ActionInputs.CliVersion) ?? 'latest'
+      ttkCliInstallCmd = Commands.NpmInstallTTKCli(cliVersion)
+    }
+    core.info(`TTK CLI installation command: ${ttkCliInstallCmd}`)
     if (
       !(await fs.pathExists(
         Pathes.TeamsfxCliPath(process.env.GITHUB_WORKSPACE)
       ))
     ) {
-      await Execute(Commands.NpmInstall)
+      await Execute(ttkCliInstallCmd)
     }
+
     // Set run-from = GitHubAction before run cli.
     // await Execute(Commands.SetConfigRunFromAction)
 
