@@ -37,7 +37,7 @@ export class Pathes {
   static readonly TeamsfxCliPath = (workdir: string) =>
     path.join(workdir, 'node_modules', '@microsoft', 'teamsfx-cli')
   static readonly PacakgeJsonPath = (workdir: string) =>
-    path.join(workdir, 'pacakge.json')
+    path.join(workdir, 'package.json')
 }
 
 export class Messages {
