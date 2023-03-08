@@ -8,6 +8,7 @@ import {Commands, Pathes, Messages, ActionInputs} from './constant'
 import {InternalError} from './errors'
 import {BuildCommandString} from './utils/commandBuilder'
 import {Execute} from './utils/exec'
+import { cliInPacakgeJson } from './utils/checkCliInPackage'
 
 async function run(): Promise<void> {
   process.env.CI_ENABLED = 'true'
@@ -21,8 +22,9 @@ async function run(): Promise<void> {
     // else - the V3 case:
     //  Read cli-version from inputs, and install the target version of TTK CLI.
     let ttkCliInstallCmd
+    const rootJsonPath = Pathes.PacakgeJsonPath(process.env.GITHUB_WORKSPACE)
     if (
-      await fs.pathExists(Pathes.PacakgeJsonPath(process.env.GITHUB_WORKSPACE))
+      (await fs.pathExists(rootJsonPath)) && (await cliInPacakgeJson(rootJsonPath)) 
     ) {
       ttkCliInstallCmd = Commands.NpmInstall
     } else {
