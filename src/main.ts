@@ -8,7 +8,7 @@ import {Commands, Pathes, Messages, ActionInputs} from './constant'
 import {InternalError} from './errors'
 import {BuildCommandString} from './utils/commandBuilder'
 import {Execute} from './utils/exec'
-import { cliInPacakgeJson } from './utils/checkCliInPackage'
+import {cliInPacakgeJson} from './utils/checkCliInPackage'
 
 async function run(): Promise<void> {
   process.env.CI_ENABLED = 'true'
@@ -24,7 +24,8 @@ async function run(): Promise<void> {
     let ttkCliInstallCmd
     const rootJsonPath = Pathes.PacakgeJsonPath(process.env.GITHUB_WORKSPACE)
     if (
-      (await fs.pathExists(rootJsonPath)) && (await cliInPacakgeJson(rootJsonPath)) 
+      (await fs.pathExists(rootJsonPath)) &&
+      (await cliInPacakgeJson(rootJsonPath))
     ) {
       ttkCliInstallCmd = Commands.NpmInstall
     } else {
