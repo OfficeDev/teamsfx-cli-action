@@ -1,6 +1,7 @@
 # GitHub Action for TeamsFx CLI
 
-> This action will be deprecated soon. Please follow this [guide](https://aka.ms/teamsfx-add-cicd-new) to setup CICD pipeline using CLI directly.
+>[!WARNING]   
+>Please note that this GitHub Action is no longer being maintained and has been archived. We recommend you follow this [guide](https://aka.ms/teamsfx-add-cicd-new) to setup CICD pipeline using CLI directly.
 
 The TeamsFx CLI GitHub Action is an integration of [TeamsFx CLI](https://www.npmjs.com/package/@microsoft/teamsfx-cli) commands, which helps Teams app developers to automate their CI/CD workflow.
 
