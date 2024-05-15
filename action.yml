@@ -1,5 +1,5 @@
 name: 'TeamsFx CLI Action'
-description: 'GitHub Action to help Teams App Developers build their CI/CD workflows.'
+description: 'This action is deprecated. We recommend you follow this [guide](https://aka.ms/teamsfx-add-cicd-new) to setup CICD pipeline using CLI directly.'
 inputs:
   cli-version:
     description: 'The version of TTK CLi for use.'
