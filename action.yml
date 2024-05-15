@@ -1,5 +1,5 @@
 name: 'TeamsFx CLI Action'
-description: 'This action is deprecated. We recommend you follow this [guide](https://aka.ms/teamsfx-add-cicd-new) to setup CICD pipeline using CLI directly.'
+description: 'This action is deprecated. Please follow https://aka.ms/teamsfx-add-cicd-new to setup CICD pipeline using CLI directly.'
 inputs:
   cli-version:
     description: 'The version of TTK CLi for use.'
